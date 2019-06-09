@@ -16,7 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<vaadin.version>13.0.8</vaadin.version>
+		<vaadin.version>10.0.16</vaadin.version>
 	</properties>
 
 	<dependencies>
@@ -47,6 +47,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.8</version>
 		</dependency>
 	</dependencies>
 
