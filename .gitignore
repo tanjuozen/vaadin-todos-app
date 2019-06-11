@@ -1,6 +1,7 @@
-HELP.md
+README.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar
+/.mvn/wrapper/MavenWrapperDownloader.java
 
 ### STS ###
 .apt_generated
@@ -27,3 +28,4 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+!/README.md
