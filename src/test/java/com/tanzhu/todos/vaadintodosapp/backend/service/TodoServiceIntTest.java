@@ -10,7 +10,6 @@ import org.springframework.boot.test.autoconfigure.web.client.AutoConfigureWebCl
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
 
@@ -20,7 +19,6 @@ import java.util.List;
 import static com.tanzhu.todos.vaadintodosapp.util.TestData.aTodoObject;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.client.ExpectedCount.manyTimes;
-import static org.springframework.test.web.client.ExpectedCount.times;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
@@ -58,6 +56,7 @@ public class TodoServiceIntTest {
         mockRestServer.verify();
 
         assertThat(actualTodos).isNotNull();
+        assertThat(actualTodos.get(0).getId()).isEqualTo(aTodoObject().getId());
     }
 
 }

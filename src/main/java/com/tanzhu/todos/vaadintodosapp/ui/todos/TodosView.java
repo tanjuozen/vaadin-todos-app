@@ -1,7 +1,7 @@
 package com.tanzhu.todos.vaadintodosapp.ui.todos;
 
 import com.tanzhu.todos.vaadintodosapp.backend.data.Todo;
-import com.tanzhu.todos.vaadintodosapp.backend.service.TodoService;
+import com.tanzhu.todos.vaadintodosapp.ui.dataproviders.TodoInMemoryProvider;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.notification.Notification;
@@ -10,29 +10,30 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.spring.annotation.SpringComponent;
+import com.vaadin.flow.spring.annotation.UIScope;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
-
-@Route(TodosGrid.NAME)
+@Route(TodosView.NAME)
 @Theme(value = Lumo.class, variant = Lumo.DARK)
-public class TodosGrid extends VerticalLayout {
+@SpringComponent
+@UIScope
+public class TodosView extends VerticalLayout {
 
-    public static final String NAME = "todos";
+    static final String NAME = "todos";
 
-    final Grid<Todo> grid = new Grid<>();
-    private TodoService service;
+    private final Grid<Todo> grid = new Grid<>();
+    private TodoInMemoryProvider dataProvider;
 
-    public TodosGrid(TodoService service) {
-        this.service = service;
-        final List<Todo> allTodos = fetchTodos();
+    @Autowired
+    public TodosView(TodoInMemoryProvider dataProvider) {
+        this.dataProvider = dataProvider;
 
         add(grid);
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
-
-        grid.setItems(allTodos);
 
         grid.addColumn(Todo::getId)
                 .setHeader("ID")
@@ -64,9 +65,7 @@ public class TodosGrid extends VerticalLayout {
                 .setHeader("COMPLETED")
                 .setSortable(true)
                 .setFlexGrow(1);
-    }
 
-    private List<Todo> fetchTodos() {
-        return this.service.getAllTodos();
+        grid.setDataProvider(this.dataProvider);
     }
 }
