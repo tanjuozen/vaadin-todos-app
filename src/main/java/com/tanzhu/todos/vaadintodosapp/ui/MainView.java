@@ -20,7 +20,7 @@ public class MainView extends VerticalLayout implements HasComponents {
     @Autowired
     public MainView(TodosView todosView) {
         this.todosView = todosView;
-        final H1 h1 = new H1("TODOs APP");
+        final H1 h1 = new H1("TODO APP");
         setAlignItems(Alignment.CENTER);
         add(h1, this.todosView);
     }

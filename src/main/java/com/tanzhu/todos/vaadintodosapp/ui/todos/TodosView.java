@@ -51,6 +51,7 @@ public class TodosView extends VerticalLayout {
 
                     Button update = new Button("Update", buttonClickEvent -> {
                         todo.setTitle(title.getValue());
+                        this.dataProvider.updateTodo(todo);
                         grid.getDataProvider().refreshItem(todo);
                         Notification.show("Todo with id { " + todo.getId() + " } updated");
                     });

@@ -11,8 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 @UIScope
 public class TodoInMemoryProvider extends ListDataProvider<Todo> {
 
+    private TodoService todoService;
+
     @Autowired
     public TodoInMemoryProvider(TodoService todoService) {
         super(todoService.getAllTodos());
+        this.todoService = todoService;
+    }
+
+    public Todo updateTodo(Todo todo) {
+        return this.todoService.updateTodo(todo);
     }
 }
