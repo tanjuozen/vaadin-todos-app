@@ -1,4 +1,4 @@
-HELP.md
+README.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 /.mvn/wrapper/MavenWrapperDownloader.java
@@ -28,4 +28,4 @@ HELP.md
 
 ### VS Code ###
 .vscode/
-!/HELP.md
+!/README.md
