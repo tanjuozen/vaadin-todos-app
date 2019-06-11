@@ -10,7 +10,7 @@ To run the tests only, use the following command: `mvn test`
 
 Spring boot ships with an embedded Tomcat application server that will start up on port 8080. This port can be overridden with a parameter: `-Dserver.port=PORT` or in the application.properties.
 
-###Setup
+### Setup
 This is a simple application that consists of two parts. 
 
 - A Backend service that consumes data from a remote API.
